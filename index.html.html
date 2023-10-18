@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Records</title>
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/free-photo/medical-banner-with-doctor-wearing-coat_23-2149611226.jpg?w=1380&t=st=1697625101~exp=1697625701~hmac=8ea123943593725de310888b8b1241892a2f7797ba792d6a054440ae00b5ecd5');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #recordContainer {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px); /* Apply blur to the container */
+        }
+        #logo {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="recordContainer">
+        <img id="logo" src="https://blogger.googleusercontent.com/img/a/AVvXsEiAl1wExeAm72fmGwI4ac4DKRUBkgRl5jv5yNHtOLQvg37cGhDmNq95VAw360fiWc_wvkC6iDgJReW_Du1uxKDalUr5Nl4zpwL_DeyMLc3nqUbMdkigZSfbBuR4ilUTVa_OmWjdI0FOAv2_9M7bxuogHgLoXXIsTpFtfVWm0LFo6gJBcwtGZTAbw951Dg=s489"  width="200" height="200">
+        <h1>Student Records</h1>
+
+        <div>
+            Enter Certification Number: <input type="text" id="certificationNumberInput">
+            <button onclick="validateCertification()">Validate</button>
+        </div>
+
+        <div id="validationResult"></div>
+
+        <div id="centerColumn">
+            <!-- Records will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // Sample student records
+        var studentRecords = [
+            { certificationNumber: "12345", name: "John Doe", dob: "01/15/1990", workshopName: "Workshop A", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            // Add{ certificationNumber: "12345", name: "John Doe", dob: "01/15/1990", workshopName: "Workshop A", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12348", name: " habib", dob: "01/11/1990", workshopName: "Workshop A", workshopDate: "2023-10-10", institute: "Doctors Place Academy" }, 
+            { certificationNumber: "12335", name: "Shahrukh", dob: "04/3/1990", workshopName: "Workshop xray", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12245", name: "mehak", dob: "01/11/1990", workshopName: "Workshop chest", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12325", name: "sitara", dob: "01/9/1990", workshopName: "Workshop management", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12340", name: "Rafique", dob: "01/5/1990", workshopName: "Workshop nutrition", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12355", name: "Huzaifa", dob: "01/6/1990", workshopName: "Workshop chest", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12325", name: "fatima", dob: "01/4/1990", workshopName: "Workshop ecg", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12315", name: "maria", dob: "01/10/1990", workshopName: "Workshop ecg", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12325", name: "Hira", dob: "01/02/1990", workshopName: "Workshop xray", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+            { certificationNumber: "12145", name: "Ali", dob: "01/11/1990", workshopName: "Workshop b", workshopDate: "2023-10-10", institute: "Doctors Place Academy" },
+        ];
+
+        function validateCertification() {
+            var certificationNumberInput = document.getElementById("certificationNumberInput").value;
+            var studentRecord = studentRecords.find(record => record.certificationNumber === certificationNumberInput);
+
+            if (studentRecord) {
+                // Display student information in the center column
+                var centerColumn = document.getElementById("centerColumn");
+                centerColumn.innerHTML = `
+                    <h2>Student Information</h2>
+                    <p>Certification Number: ${studentRecord.certificationNumber}</p>
+                    <p>Name: ${studentRecord.name}</p>
+                    <p>Date of Birth: ${studentRecord.dob}</p>
+                    <p>Workshop Name: ${studentRecord.workshopName}</p>
+                    <p>Workshop Date: ${studentRecord.workshopDate}</p>
+                    <p>Institute: ${studentRecord.institute}</p>
+                `;
+                document.getElementById("validationResult").textContent = "Certification Valid";
+            } else {
+                document.getElementById("validationResult").textContent = "Certification Invalid";
+                document.getElementById("centerColumn").innerHTML = ""; // Clear the center column
+            }
+        }
+    </script>
+</body>
+</html>
